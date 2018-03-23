@@ -22,33 +22,40 @@ $(document).ready(function() {
       });
     },
     select : function(event, ui) {
-      var ajax = $.ajax({
-        url: "https://api.flickr.com/services/rest/",
-        method: "GET",
-        data: {
-          method: "flickr.photos.search",
-          api_key: "044417fb5b28b6ccb072373638d89bd4",
-          tags: ui.item.value,
-          format: "json",
-          nojsoncallback: "1",
-          per_page: $("#nombreParPage").val()
-        }
-      });
-      ajax.done(function(data){
-        $('#listeImages li').remove();
-        if($(data).length != 0){
-          $(data.photos.photo).each(function(index, val){
-            $('ul').append('<li><img src="https://farm' + val.farm + '.staticflickr.com/' + val.server + '/' + val.id + '_' + val.secret + '.jpg"/></li>');
-          });
-        }else{
-          $('ul').append("<li>Cette commune n'existe pas en France</li>");
-        }
-      });
+      envoieRequette(ui.item.value, $("#nombreParPage").val());
+    },
+    change : function(event, ui) {
+      $("#commune").val("");
     }
   });
 
-  $("#submit").click(function(){
-
+  $("#nombreParPage").change(function(){
+    envoieRequette($("#commune").val(), $("#nombreParPage").val());
   });
 
 });
+
+function envoieRequette(ville, nombre){
+  var ajax = $.ajax({
+    url: "https://api.flickr.com/services/rest/",
+    method: "GET",
+    data: {
+      method: "flickr.photos.search",
+      api_key: "044417fb5b28b6ccb072373638d89bd4",
+      tags: ville,
+      format: "json",
+      nojsoncallback: "1",
+      per_page: nombre
+    }
+  });
+  ajax.done(function(data){
+    $('#listeImages li').remove();
+    if($(data).length != 0){
+      $(data.photos.photo).each(function(index, val){
+        $('ul').append('<li><img src="https://farm' + val.farm + '.staticflickr.com/' + val.server + '/' + val.id + '_' + val.secret + '.jpg"/></li>');
+      });
+    }else{
+      $('ul').append("<li>Cette commune n'existe pas en France</li>");
+    }
+  });
+}
