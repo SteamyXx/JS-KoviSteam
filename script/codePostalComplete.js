@@ -21,13 +21,17 @@ $(document).ready(function() {
           maxRows : 15
         },
         success : function(data) {
-          champCommune = data[0].Ville;
           var parse = data.map(function(ligne) {
             return {
               label : ligne.Ville,
               value : ligne.Ville,
             };
           });
+          if(data.length != 0){
+            champCommune = data[0].Ville;
+          }else{
+            champCommune = "";
+          }
           response(parse);
         },
         fail : function(){
