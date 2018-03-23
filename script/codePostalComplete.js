@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     $("#commune").autocomplete({
+      minLength: 2,
       source: function(request, response) {
         $.ajax({
           url : "http://infoweb-ens/~jacquin-c/codePostal/commune.php",
@@ -19,6 +20,9 @@ $(document).ready(function() {
             response(parse);
           }
         });
+      },
+      select : function(event, ui) {
+
       }
   });
 });
