@@ -30,7 +30,8 @@ $(document).ready(function() {
           api_key: "044417fb5b28b6ccb072373638d89bd4",
           tags: ui.item.value,
           format: "json",
-          nojsoncallback: "1"
+          nojsoncallback: "1",
+          per_page: $("#nombreParPage").val()
         }
       });
       ajax.done(function(data){
@@ -45,4 +46,9 @@ $(document).ready(function() {
       });
     }
   });
+
+  $("#submit").click(function(){
+
+  });
+
 });
