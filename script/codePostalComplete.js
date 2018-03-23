@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+  $("#onglets div").hide();
+
+  $("#onglets div").on("click", function() {
+    $(this).css("border", "2px solid grey")
+    $("#onglets div").not(this).css("border", "2px solid white")
+    $("#liste, #tableau").hide();
+    $("#"+$(this).attr("value")).show();
+  });
+
   $("#commune").autocomplete({
     minLength: 2,
     source: function(request, response) {
