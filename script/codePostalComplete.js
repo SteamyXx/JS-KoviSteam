@@ -9,7 +9,7 @@ $(document).ready(function() {
     $("#"+$(this).attr("value")).show();
   });
 
-  var champComune = "";
+  var champCommune = "";
   $("#commune").autocomplete({
     minLength: 2,
     source: function(request, response) {
@@ -21,6 +21,7 @@ $(document).ready(function() {
           maxRows : 15
         },
         success : function(data) {
+          champCommune = data[0].Ville;
           var parse = data.map(function(ligne) {
             return {
               label : ligne.Ville,
@@ -30,16 +31,17 @@ $(document).ready(function() {
           response(parse);
         },
         fail : function(){
-
+          champCommune = "";
         }
       });
     },
     select : function(event, ui) {
       $("#onglets div").show();
       envoieRequette(ui.item.value, $("#nombreParPage").val());
+      champCommune = ui.item.value;
     },
     change : function(event, ui) {
-      $("#commune").val("");
+      $("#commune").val(champCommune);
     }
   });
 
