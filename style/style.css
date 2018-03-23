@@ -1,0 +1,25 @@
+#onglets {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+#onglets div {
+  display: inline-block;
+  background-color: lightgrey;
+  padding: 1%;
+  cursor: pointer;
+}
+
+#liste li {
+  list-style-type: none;
+}
+
+#formatTableau {
+  border: 2px solid white;
+}
+
+#formatListe {
+  border: 2px solid grey;
+  margin-right: 15%;
+  margin-left: 15%;
+}

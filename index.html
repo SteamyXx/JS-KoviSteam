@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="script/codePostalComplete.js"></script>
+    <link rel="stylesheet" href="style/style.css">
   </head>
   <body>
     <form>
@@ -11,9 +12,15 @@
       <input type="number" id="nombreParPage" min="1" value="1"/>
       <input type="submit" id="submit"/>
     </form>
+    <div id="onglets">
+      <div id="formatListe" value="liste"> Format Ligne </div><div id="formatTableau" value="tableau"> Format Tableau </div>
+    </div>
     <div id="liste">
-      <ul id='listeImages'>
+      <ul>
       </ul>
+    </div>
+    <div id="tableau">
+
     </div>
   </body>
 </html>

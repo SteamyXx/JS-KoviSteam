@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+  $("#onglets div").hide();
+
+  $("#onglets div").on("click", function() {
+    $(this).css("border", "2px solid grey")
+    $("#onglets div").not(this).css("border", "2px solid white")
+    $("#liste, #tableau").hide();
+    $("#"+$(this).attr("value")).show();
+  });
+
   $("#commune").autocomplete({
     minLength: 2,
     source: function(request, response) {
@@ -22,6 +31,7 @@ $(document).ready(function() {
       });
     },
     select : function(event, ui) {
+      $("#onglets div").show();
       var ajax = $.ajax({
         url: "https://api.flickr.com/services/rest/",
         method: "GET",
@@ -35,7 +45,7 @@ $(document).ready(function() {
         }
       });
       ajax.done(function(data){
-        $('#listeImages li').remove();
+        $('#liste li').remove();
         if($(data).length != 0){
           $(data.photos.photo).each(function(index, val){
             $('ul').append('<li><img src="https://farm' + val.farm + '.staticflickr.com/' + val.server + '/' + val.id + '_' + val.secret + '.jpg"/></li>');
