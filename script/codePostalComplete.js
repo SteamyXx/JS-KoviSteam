@@ -9,6 +9,7 @@ $(document).ready(function() {
     $("#"+$(this).attr("value")).show();
   });
 
+  var champComune = "";
   $("#commune").autocomplete({
     minLength: 2,
     source: function(request, response) {
@@ -27,10 +28,14 @@ $(document).ready(function() {
             };
           });
           response(parse);
+        },
+        fail : function(){
+
         }
       });
     },
     select : function(event, ui) {
+      $("#onglets div").show();
       envoieRequette(ui.item.value, $("#nombreParPage").val());
     },
     change : function(event, ui) {
@@ -58,7 +63,7 @@ function envoieRequette(ville, nombre){
     }
   });
   ajax.done(function(data){
-    $('#listeImages li').remove();
+    $('#liste li').remove();
     if($(data).length != 0){
       $(data.photos.photo).each(function(index, val){
         $('ul').append('<li><img src="https://farm' + val.farm + '.staticflickr.com/' + val.server + '/' + val.id + '_' + val.secret + '.jpg"/></li>');
