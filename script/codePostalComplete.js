@@ -66,16 +66,16 @@ function envoieRequette(ville, nombre){
       format: "json",
       nojsoncallback: "1",
       per_page: nombre
-    }
-  });
-  ajax.done(function(data){
-    $('#liste li').remove();
-    if($(data).length != 0){
-      $(data.photos.photo).each(function(index, val){
-        $('ul').append('<li><img src="https://farm' + val.farm + '.staticflickr.com/' + val.server + '/' + val.id + '_' + val.secret + '.jpg"/></li>');
-      });
-    }else{
-      $('ul').append("<li>Cette commune n'existe pas en France</li>");
+    },
+    success: function(data){
+      $('#liste li').remove();
+      if($(data).length != 0){
+        $(data.photos.photo).each(function(index, val){
+          $('ul').append('<li><img src="https://farm' + val.farm + '.staticflickr.com/' + val.server + '/' + val.id + '_' + val.secret + '.jpg"/></li>');
+        });
+      }else{
+        $('ul').append("<li>Cette commune n'existe pas en France</li>");
+      }
     }
   });
 }
