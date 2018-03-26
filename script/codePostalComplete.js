@@ -1,10 +1,11 @@
 $(document).ready(function() {
 
   $("#onglets div").hide();
+  $("#tableau, #liste").hide();
 
   $("#onglets div").on("click", function() {
-    $(this).css("border", "2px solid grey")
-    $("#onglets div").not(this).css("border", "2px solid white")
+    $(this).css("border", "2px solid grey");
+    $("#onglets div").not(this).css("border", "2px solid white");
     $("#liste, #tableau").hide();
     $("#"+$(this).attr("value")).show();
   });
@@ -56,7 +57,7 @@ $(document).ready(function() {
 });
 
 function envoieRequette(ville, nombre){
-  var ajax = $.ajax({
+  $.ajax({
     url: "https://api.flickr.com/services/rest/",
     method: "GET",
     data: {
@@ -67,14 +68,40 @@ function envoieRequette(ville, nombre){
       nojsoncallback: "1",
       per_page: nombre
     },
-    success: function(data){
-      $('#liste li').remove();
-      if($(data).length != 0){
-        $(data.photos.photo).each(function(index, val){
-          $('ul').append('<li><img src="https://farm' + val.farm + '.staticflickr.com/' + val.server + '/' + val.id + '_' + val.secret + '.jpg"/></li>');
+    success: function(dataImg){
+      $('#liste ul li').remove();
+      $('#tableau table tr').remove();
+      if($(dataImg).length != 0){
+        $(dataImg.photos.photo).each(function(index, img){
+          $.ajax({
+            url: "https://api.flickr.com/services/rest/",
+            method: "GET",
+            data: {
+              method: "flickr.photos.getInfo",
+              api_key: "044417fb5b28b6ccb072373638d89bd4",
+              photo_id: img.id,
+              secret: img.secret
+            },
+            success: function(dataInfo){
+              $('#liste ul li').remove();
+              $('#tableau table tr').remove();
+              if($(dataInfo).length != 0){
+                $(dataInfo.photos.photo).each(function(index, info){
+                  $('ul').append('<li><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
+                  $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td></tr>');
+                });
+              }else{
+                $('ul').append("<li>Cette commune n'existe pas en France</li>");
+                $('table').append("<tr><td>Cette commune n'existe pas en France</td></tr>");
+              }
+            }
+          });
+          $('ul').append('<li><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
+          $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + val.secret + '.jpg"/></td></tr>');
         });
       }else{
         $('ul').append("<li>Cette commune n'existe pas en France</li>");
+        $('table').append("<tr><td>Cette commune n'existe pas en France</td></tr>");
       }
     }
   });
