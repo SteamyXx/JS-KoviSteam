@@ -52,6 +52,7 @@ $(document).ready(function() {
 
   $("#nombreParPage").change(function(){
     envoieRequette($("#commune").val(), $("#nombreParPage").val());
+    $("#onglets div").show();
   });
 
 });
@@ -63,7 +64,8 @@ function envoieRequette(ville, nombre){
     data: {
       method: "flickr.photos.search",
       api_key: "044417fb5b28b6ccb072373638d89bd4",
-      tags: ville,
+      // tags: ville,
+      tags: "Paris",
       format: "json",
       nojsoncallback: "1",
       per_page: nombre
@@ -79,14 +81,15 @@ function envoieRequette(ville, nombre){
             data: {
               method: "flickr.photos.getInfo",
               api_key: "044417fb5b28b6ccb072373638d89bd4",
+              format: "json",
+              nojsoncallback: "1",
               photo_id: img.id,
               secret: img.secret
             },
             success: function(dataInfo){
-              $('#liste ul li').remove();
-              $('#tableau table tr').remove();
+              console.log(dataInfo);
               if($(dataInfo).length != 0){
-                $(dataInfo.photos.photo).each(function(index, info){
+                $(dataInfo).each(function(index, info){
                   $('ul').append('<li><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
                   $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td></tr>');
                 });
@@ -97,7 +100,7 @@ function envoieRequette(ville, nombre){
             }
           });
           $('ul').append('<li><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
-          $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + val.secret + '.jpg"/></td></tr>');
+          $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td></tr>');
         });
       }else{
         $('ul').append("<li>Cette commune n'existe pas en France</li>");
