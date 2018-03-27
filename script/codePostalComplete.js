@@ -92,15 +92,13 @@ function envoieRequette(ville, nombre){
     success: function(dataImg){
       $('.ligneListe').remove();
       $('.ligneTableau').remove();
-      if($(dataImg).length != 0){
-        console.log(dataImg);
+      if($(dataImg.photos.photo).length != 0){
         $(dataImg.photos.photo).each(function(index, img){
           $('ul').append('<li class="ligneListe"><img data-id="'+(img.id)+'" data-secret="'+(img.secret)+'" src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
           $(".ligneListe img").on("click", function() {
             $(".modal").css("display", "initial");
             $(".modalUtil").css("display", "initial");
             if ($('#infos').data("id") != $(this).data("id")) {
-              console.log("getInfo");
               remplirModal($(this).data("id"), $(this).data("secret"));
             }
           });
@@ -121,8 +119,10 @@ function envoieRequette(ville, nombre){
           });
         });
       }else{
-        $('ul').append("<li>Cette commune n'existe pas en France</li>");
-        $('table').append("<tr><td>Cette commune n'existe pas en France</td></tr>");
+        $(".modal").css("display", "initial");
+        $(".modalUtil").css("display", "initial");
+        $('#infos').data("id", 0);
+        $('#infos').html("<p>Aucune image n'est disponible pour ette ville</p>");
       }
     }
   });
