@@ -48,11 +48,9 @@ $(document).ready(function() {
     },
     select : function(event, ui) {
       if($("#nombreParPage").val() != ""){
-        $("#onglets div").show();
         envoieRequette(ui.item.value, $("#nombreParPage").val());
       }
       champCommune = ui.item.value;
-      $("#liste").show();
     },
     change : function(event, ui) {
       $("#commune").val(champCommune);
@@ -62,7 +60,7 @@ $(document).ready(function() {
   $("#nombreParPage").change(function(){
     if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
       envoieRequette($("#commune").val(), $("#nombreParPage").val());
-      $("#onglets div").show();
+
     }
   });
 
@@ -70,8 +68,6 @@ $(document).ready(function() {
     event.preventDefault();
     if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
       envoieRequette($("#commune").val(), $("#nombreParPage").val());
-      $("#onglets div").show();
-      $("#liste").show();
     }
   });
 
@@ -116,11 +112,12 @@ function envoieRequette(ville, nombre){
             }
           });
         });
+        $("#onglets div").show();
       }else{
         $(".modal").css("display", "initial");
         $(".modalUtil").css("display", "initial");
         $('#infos').data("id", 0);
-        $('#infos').html("<p>Aucune image n'est disponible pour ette ville</p>");
+        $('#infos').html("<p>Aucune image n'est disponible pour cette ville</p>");
       }
     }
   });
