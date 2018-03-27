@@ -26,3 +26,17 @@
 table tr td , table tr th{
   border: 1px solid black;
 }
+
+.modal {
+  position: relative;
+}
+
+.croix {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background-color: lightgrey;
+  font-weight: 500;
+}

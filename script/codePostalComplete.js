@@ -1,5 +1,17 @@
 $(document).ready(function() {
 
+  if (typeof getUrlParameter("messagePla") !== 'undefined') {
+    $(".messagePlacement").css("display", "initial");
+    $(".messagePlacementUtil").css("display", "initial");
+    $('.modal-creer').show();
+  }
+
+  $(".bouton-revenir").click(function() {
+    $(".messagePlacement").css("display", "none");
+    $(".messagePlacementUtil").css("display", "none");
+    // $(".documents").show();
+  });
+
   $("#onglets div").hide();
   $("#tableau, #liste").hide();
 
