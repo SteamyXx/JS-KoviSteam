@@ -31,6 +31,7 @@ $(document).ready(function() {
       });
     },
     select : function(event, ui) {
+      $("#onglets div").show();
       envoieRequette(ui.item.value, $("#nombreParPage").val());
     },
     change : function(event, ui) {
@@ -45,7 +46,7 @@ $(document).ready(function() {
 });
 
 function envoieRequette(ville, nombre){
-  var ajax = $.ajax({
+  var photos = $.ajax({
     url: "https://api.flickr.com/services/rest/",
     method: "GET",
     data: {
@@ -55,16 +56,38 @@ function envoieRequette(ville, nombre){
       format: "json",
       nojsoncallback: "1",
       per_page: nombre
+    },
+    succes : function(data){
+      $('#liste li').remove();
+      if($(data).length != 0){
+        $(data.photos.photo).each(function(index, val){
+          $('ul').append('<li><img src="https://farm' + val.farm + '.staticflickr.com/' + val.server + '/' + val.id + '_' + val.secret + '.jpg"/></li>');
+        });
+      }else{
+        $('ul').append("<li>Cette commune n'existe pas en France</li>");
+      }
     }
   });
-  ajax.done(function(data){
-    $('#listeImages li').remove();
-    if($(data).length != 0){
-      $(data.photos.photo).each(function(index, val){
-        $('ul').append('<li><img src="https://farm' + val.farm + '.staticflickr.com/' + val.server + '/' + val.id + '_' + val.secret + '.jpg"/></li>');
-      });
-    }else{
-      $('ul').append("<li>Cette commune n'existe pas en France</li>");
-    }
-  });
+
+  // var infoPhotos = $.ajax({
+  //   url: "https://api.flickr.com/services/rest/",
+  //   method: "GET",
+  //   data: {
+  //     method: "flickr.photos.getInfo",
+  //     secret: val.secret
+  //   },
+  //   succes : function(data){
+  //     $('#liste li').remove();
+  //     if($(data).length != 0){
+  //       $(data.photos.photo).each(function(index, val){
+  //         $('ul').append('<li><img src="https://farm' + val.farm + '.staticflickr.com/' + val.server + '/' + val.id + '_' + val.secret + '.jpg"/></li>');
+  //       });
+  //     }else{
+  //       $('ul').append("<li>Cette commune n'existe pas en France</li>");
+  //     }
+  //   }
+  // });
+
+
+
 }
