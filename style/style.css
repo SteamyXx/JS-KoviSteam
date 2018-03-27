@@ -53,10 +53,13 @@ table tr td , table tr th{
 
 .croix {
   position: absolute;
+  cursor: pointer;
   top: 2%;
   right: 2%;
-  width: 10px;
-  height: 10px;
-  background-color: lightgrey;
+  width: 25px;
+  height: auto;
+  border-radius: 40%;
+  text-align: center;
+  background-color: grey;
   font-weight: 500;
 }

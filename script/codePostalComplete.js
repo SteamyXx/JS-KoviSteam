@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+
+  $(".croix").on("click", function() {
+    $(".modal").css("display", "none");
+    $(".modalUtil").css("display", "none");
+  });
+
   $("#onglets div").hide();
   $("#tableau, #liste").hide();
 
@@ -65,6 +71,7 @@ $(document).ready(function() {
     if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
       envoieRequette($("#commune").val(), $("#nombreParPage").val());
       $("#onglets div").show();
+      $("#liste").show();
     }
   });
 
@@ -100,7 +107,7 @@ function envoieRequette(ville, nombre){
             },
             success: function(dataInfo){
               console.log(dataInfo);
-              $('ul').append('<li class="ligneListe"><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/><div><p>' + dataInfo.photo.title._content + '</p><p>' + dataInfo.photo.dates.taken + '</p><p>' + dataInfo.photo.owner.username + '</p></div></li>');
+              $('ul').append('<li class="ligneListe"><img data-id="'.img.id.'" src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/><div><p>' + dataInfo.photo.title._content + '</p><p>' + dataInfo.photo.dates.taken + '</p><p>' + dataInfo.photo.owner.username + '</p></div></li>');
               $(".ligneListe img").on("click", function() {
                 $(".modal").css("display", "initial");
                 $(".modalUtil").css("display", "initial");
@@ -116,8 +123,4 @@ function envoieRequette(ville, nombre){
     }
   });
 
-  $(".croix").on("click", function() {
-    $(".modal").css("display", "none");
-    $(".modalUtil").css("display", "none");
-  });
 }
