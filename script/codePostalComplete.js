@@ -98,9 +98,11 @@ function envoieRequette(ville, nombre){
           $(".ligneListe img").on("click", function() {
             $(".modal").css("display", "initial");
             $(".modalUtil").css("display", "initial");
-            remplirModal($(this).data("id"), $(this).data("secret"));
+            if ($('#infos').data("id") != $(this).data("id")) {
+              console.log("getInfo");
+              remplirModal($(this).data("id"), $(this).data("secret"));
+            }
           });
-          $('table').app
         });
       }else{
         $('ul').append("<li>Cette commune n'existe pas en France</li>");
@@ -123,7 +125,7 @@ function remplirModal(id, secret) {
       secret: secret
     },
     success: function(dataInfo){
-      console.log(dataInfo);
+      $('#infos').data("id", id);
       $('#infos').html('<p>' + dataInfo.photo.title._content + '</p><p>' + dataInfo.photo.dates.taken + '</p><p>' + dataInfo.photo.owner.username + '</p>');
     }
   });
