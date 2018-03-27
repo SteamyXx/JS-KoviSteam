@@ -41,8 +41,10 @@ $(document).ready(function() {
       });
     },
     select : function(event, ui) {
-      $("#onglets div").show();
-      envoieRequette(ui.item.value, $("#nombreParPage").val());
+      if($("#nombreParPage").val() != ""){
+        $("#onglets div").show();
+        envoieRequette(ui.item.value, $("#nombreParPage").val());
+      }
       champCommune = ui.item.value;
       $("#liste").show();
     },
@@ -52,8 +54,18 @@ $(document).ready(function() {
   });
 
   $("#nombreParPage").change(function(){
-    envoieRequette($("#commune").val(), $("#nombreParPage").val());
-    $("#onglets div").show();
+    if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
+      envoieRequette($("#commune").val(), $("#nombreParPage").val());
+      $("#onglets div").show();
+    }
+  });
+
+  $('#boutonSubmit').click(function(event){
+    event.preventDefault();
+    if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
+      envoieRequette($("#commune").val(), $("#nombreParPage").val());
+      $("#onglets div").show();
+    }
   });
 
 });
