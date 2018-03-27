@@ -22,3 +22,7 @@
   margin-right: 15%;
   margin-left: 15%;
 }
+
+table tr td{
+  border: 1px solid black;
+}
