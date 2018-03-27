@@ -93,6 +93,7 @@ function envoieRequette(ville, nombre){
       $('.ligneListe').remove();
       $('.ligneTableau').remove();
       if($(dataImg).length != 0){
+        console.log(dataImg);
         $(dataImg.photos.photo).each(function(index, img){
           $('ul').append('<li class="ligneListe"><img data-id="'+(img.id)+'" data-secret="'+(img.secret)+'" src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
           $(".ligneListe img").on("click", function() {
@@ -100,7 +101,21 @@ function envoieRequette(ville, nombre){
             $(".modalUtil").css("display", "initial");
             remplirModal($(this).data("id"), $(this).data("secret"));
           });
-          $('table').app
+          $.ajax({
+            url: "https://api.flickr.com/services/rest/",
+            method: "GET",
+            data: {
+              method: "flickr.photos.getInfo",
+              api_key: "044417fb5b28b6ccb072373638d89bd4",
+              format: "json",
+              nojsoncallback: "1",
+              photo_id: img.id,
+              secret: img.secret
+            },
+            success: function(dataInfo){
+              $('table').append('<tr class="ligneTableau"><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td><td>' + dataInfo.photo.title._content + '</td><td>' + dataInfo.photo.dates.taken + '</td><td>' + dataInfo.photo.owner.username + '</td></tr>');
+            }
+          });
         });
       }else{
         $('ul').append("<li>Cette commune n'existe pas en France</li>");
@@ -123,7 +138,6 @@ function remplirModal(id, secret) {
       secret: secret
     },
     success: function(dataInfo){
-      console.log(dataInfo);
       $('#infos').html('<p>' + dataInfo.photo.title._content + '</p><p>' + dataInfo.photo.dates.taken + '</p><p>' + dataInfo.photo.owner.username + '</p>');
     }
   });
