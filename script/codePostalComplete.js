@@ -70,8 +70,8 @@ function envoieRequette(ville, nombre){
       per_page: nombre
     },
     success: function(dataImg){
-      $('#liste ul li').remove();
-      $('#tableau table tr').remove();
+      $('.ligneListe').remove();
+      $('.ligneTableau').remove();
       if($(dataImg).length != 0){
         $(dataImg.photos.photo).each(function(index, img){
           $.ajax({
@@ -87,8 +87,8 @@ function envoieRequette(ville, nombre){
             },
             success: function(dataInfo){
               console.log(dataInfo);
-              $('ul').append('<li><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
-              $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td></tr>');
+              $('ul').append('<li class="ligneListe"><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/><div><p>' + dataInfo.photo.title._content + '</p><p>' + dataInfo.photo.dates.taken + '</p></div></li>');
+              $('table').append('<tr class="ligneTableau"><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td><td>' + dataInfo.photo.title._content + '</td><td>' + dataInfo.photo.dates.taken + '</td></tr>');
             }
           });
         });
