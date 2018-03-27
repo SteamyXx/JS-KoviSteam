@@ -28,13 +28,33 @@ table tr td , table tr th{
 }
 
 .modal {
-  position: relative;
+  border: 5px solid #4A4A4A;
+	width: 33%;
+	height: 28%;
+	position: fixed;
+	background-color: #DCDCDC;
+	display: none;
+	top: 30%;
+  left: 30%;
+	z-index: 100;
+	padding: 20px;
+}
+
+.modalUtil {
+  position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.4);
+	z-index: 99;
+	display: none;
 }
 
 .croix {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 2%;
+  right: 2%;
   width: 10px;
   height: 10px;
   background-color: lightgrey;

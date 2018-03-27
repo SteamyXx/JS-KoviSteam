@@ -1,17 +1,5 @@
 $(document).ready(function() {
 
-  if (typeof getUrlParameter("messagePla") !== 'undefined') {
-    $(".messagePlacement").css("display", "initial");
-    $(".messagePlacementUtil").css("display", "initial");
-    $('.modal-creer').show();
-  }
-
-  $(".bouton-revenir").click(function() {
-    $(".messagePlacement").css("display", "none");
-    $(".messagePlacementUtil").css("display", "none");
-    // $(".documents").show();
-  });
-
   $("#onglets div").hide();
   $("#tableau, #liste").hide();
 
@@ -56,6 +44,7 @@ $(document).ready(function() {
       $("#onglets div").show();
       envoieRequette(ui.item.value, $("#nombreParPage").val());
       champCommune = ui.item.value;
+      $("#liste").show();
     },
     change : function(event, ui) {
       $("#commune").val(champCommune);
@@ -100,6 +89,10 @@ function envoieRequette(ville, nombre){
             success: function(dataInfo){
               console.log(dataInfo);
               $('ul').append('<li class="ligneListe"><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/><div><p>' + dataInfo.photo.title._content + '</p><p>' + dataInfo.photo.dates.taken + '</p><p>' + dataInfo.photo.owner.username + '</p></div></li>');
+              $(".ligneListe img").on("click", function() {
+                $(".modal").css("display", "initial");
+                $(".modalUtil").css("display", "initial");
+              });
               $('table').append('<tr class="ligneTableau"><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td><td>' + dataInfo.photo.title._content + '</td><td>' + dataInfo.photo.dates.taken + '</td><td>' + dataInfo.photo.owner.username + '</td></tr>');
             }
           });
@@ -109,5 +102,10 @@ function envoieRequette(ville, nombre){
         $('table').append("<tr><td>Cette commune n'existe pas en France</td></tr>");
       }
     }
+  });
+
+  $(".croix").on("click", function() {
+    $(".modal").css("display", "none");
+    $(".modalUtil").css("display", "none");
   });
 }
