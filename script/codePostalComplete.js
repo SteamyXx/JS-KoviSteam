@@ -93,8 +93,6 @@ function envoieRequette(ville, nombre, date){
         $(dataImg.photos.photo).each(function(index, img){
           $('ul').append('<li class="ligneListe"><img data-id="'+(img.id)+'" data-secret="'+(img.secret)+'" src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
           $(".ligneListe img").on("click", function() {
-            $(".modal").css("display", "initial");
-            $(".modalUtil").css("display", "initial");
             if ($('#infos').data("id") != $(this).data("id")) {
               remplirModal($(this).data("id"), $(this).data("secret"));
             }
@@ -143,6 +141,8 @@ function remplirModal(id, secret) {
     success: function(dataInfo){
       $('#infos').data("id", id);
       $('#infos').html('<p>' + dataInfo.photo.title._content + '</p><p>' + dataInfo.photo.dates.taken + '</p><p>' + dataInfo.photo.owner.username + '</p>');
+      $(".modal").css("display", "initial");
+      $(".modalUtil").css("display", "initial");
     }
   });
 }
