@@ -87,8 +87,8 @@ function envoieRequette(ville, nombre){
             },
             success: function(dataInfo){
               console.log(dataInfo);
-              $('ul').append('<li><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
-              $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td></tr>');
+              $('ul').append('<li><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/><div>' + dataInfo.photo.title._content + '</div></li>');
+              $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td><td>' + dataInfo.photo.title._content + '</td></tr>');
             }
           });
         });
