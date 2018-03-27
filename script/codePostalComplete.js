@@ -106,9 +106,10 @@ function envoieRequette(ville, nombre){
               secret: img.secret
             },
             success: function(dataInfo){
-              console.log(dataInfo);
-              $('ul').append('<li class="ligneListe"><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/><div><p>' + dataInfo.photo.title._content + '</p><p>' + dataInfo.photo.dates.taken + '</p><p>' + dataInfo.photo.owner.username + '</p></div></li>');
+              $('ul').append('<li class="ligneListe"><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
               $(".ligneListe img").on("click", function() {
+                $(".modal p").remove();
+                $(".modal").append('<p>' + dataInfo.photo.title._content + '</p><p>' + dataInfo.photo.dates.taken + '</p><p>' + dataInfo.photo.owner.username + '</p>');
                 $(".modal").css("display", "initial");
                 $(".modalUtil").css("display", "initial");
               });
