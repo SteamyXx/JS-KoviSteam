@@ -23,6 +23,6 @@
   margin-left: 15%;
 }
 
-table tr td{
+table tr td , table tr th{
   border: 1px solid black;
 }
