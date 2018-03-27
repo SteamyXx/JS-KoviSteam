@@ -64,8 +64,7 @@ function envoieRequette(ville, nombre){
     data: {
       method: "flickr.photos.search",
       api_key: "044417fb5b28b6ccb072373638d89bd4",
-      // tags: ville,
-      tags: "Paris",
+      tags: ville,
       format: "json",
       nojsoncallback: "1",
       per_page: nombre
@@ -88,19 +87,10 @@ function envoieRequette(ville, nombre){
             },
             success: function(dataInfo){
               console.log(dataInfo);
-              if($(dataInfo).length != 0){
-                $(dataInfo).each(function(index, info){
-                  $('ul').append('<li><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
-                  $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td></tr>');
-                });
-              }else{
-                $('ul').append("<li>Cette commune n'existe pas en France</li>");
-                $('table').append("<tr><td>Cette commune n'existe pas en France</td></tr>");
-              }
+              $('ul').append('<li><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
+              $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td></tr>');
             }
           });
-          $('ul').append('<li><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
-          $('table').append('<tr><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td></tr>');
         });
       }else{
         $('ul').append("<li>Cette commune n'existe pas en France</li>");
