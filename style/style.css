@@ -1,3 +1,13 @@
+html{
+  width: auto;
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  background-color: #1E2229;
+}
+
 #onglets {
   margin-top: 3%;
   margin-bottom: 3%;
@@ -62,4 +72,65 @@ table tr td , table tr th{
   text-align: center;
   background-color: grey;
   font-weight: 500;
+}
+
+form{
+  background-color: #2A2F38;
+  text-align: center;
+  color: #CCCCCC;
+  overflow: hidden;
+  border-radius: 3vw;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  width: 33%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+label{
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+label input{
+  float: right;
+}
+
+input{
+  color: #CCCCCC;
+  border: 1px solid black;
+  border-radius: 1.5vh;
+  transition: background-color 0.5s;
+  background-color: #2A2F38;
+  width: 33%;
+  height: 100%;
+  text-align: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  font-size: 100%;
+}
+
+input[type="submit"]{
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+input[type ="text"], input[type="number"]{
+  display: inline-block;
+  padding-left: 1%;
+}
+
+input:hover{
+  transition: background-color 0.5s;
+  background-color: #474F5E;
+}
+
+input:focus{
+  background-color: #1E2229;
 }
