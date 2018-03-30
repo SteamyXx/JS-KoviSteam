@@ -1,5 +1,22 @@
 $(document).ready(function() {
 
+  $("#calendrier").datepicker({
+    altField: "#datepicker",
+    closeText: 'Fermer',
+    prevText: 'Précédent',
+    nextText: 'Suivant',
+    currentText: 'Aujourd\'hui',
+    monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+    monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+    dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+    dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+    dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+    weekHeader: 'Sem.',
+    dateFormat: 'dd-mm-yy',
+    firstDay: 1,
+  });
+  $("#calendrier").datepicker('setDate', 'today');
+
   $(".croix").on("click", function() {
     $(".modal").css("display", "none");
     $(".modalUtil").css("display", "none");
@@ -53,8 +70,8 @@ $(document).ready(function() {
       });
     },
     select : function(event, ui) {
-      if($("#nombreParPage").val() != ""){
-        envoieRequette(ui.item.value, $("#nombreParPage").val());
+      if($("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
+        envoieRequette(ui.item.value, $("#nombreParPage").val(), $("#calendrier").datepicker("getDate"));
       }
       champCommune = ui.item.value;
     },
@@ -98,7 +115,7 @@ function envoieRequette(ville, nombre, date){
       format: "json",
       nojsoncallback: "1",
       per_page: nombre,
-      min_taken_date: date
+      min_upload_date: Math.round((date).getTime() / 1000)
     },
     success: function(dataImg){
       $('.ligneListe').remove();
