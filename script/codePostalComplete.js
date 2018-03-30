@@ -5,6 +5,8 @@ $(document).ready(function() {
     $(".modalUtil").css("display", "none");
   });
 
+  $("table").DataTable();
+
   $("#onglets div").hide();
   $("#tableau, #liste").hide();
 
@@ -104,7 +106,7 @@ function envoieRequette(ville, nombre, date){
               secret: img.secret
             },
             success: function(dataInfo){
-              $('table').append('<tr class="ligneTableau"><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></td><td>' + dataInfo.photo.title._content + '</td><td>' + dataInfo.photo.dates.taken + '</td><td>' + dataInfo.photo.owner.username + '</td></tr>');
+              $('table tbody').append('<tr class="ligneTableau"><td><img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg" width="220px" height="200px"/></td><td>' + dataInfo.photo.title._content + '</td><td>' + dataInfo.photo.dates.taken + '</td><td>' + dataInfo.photo.owner.username + '</td></tr>');
             }
           });
         });
