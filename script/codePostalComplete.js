@@ -95,7 +95,7 @@ function envoieRequette(ville, nombre, date){
       format: "json",
       nojsoncallback: "1",
       per_page: nombre,
-      min_taken_date: Math.round((date).getTime() / 1000)
+      min_upload_date: Math.round((date).getTime() / 1000)
     },
     success: function(dataImg){
       $('.ligneListe').remove();
