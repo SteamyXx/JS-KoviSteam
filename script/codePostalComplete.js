@@ -48,7 +48,7 @@ $(document).ready(function() {
       });
     },
     select : function(event, ui) {
-      if($("#nombreParPage").val() != ""){
+      if($("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
         envoieRequette(ui.item.value, $("#nombreParPage").val());
       }
       champCommune = ui.item.value;
@@ -59,7 +59,7 @@ $(document).ready(function() {
   });
 
   $("#nombreParPage").change(function(){
-    if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
+    if($("#commune").val() != "" && $("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
       envoieRequette($("#commune").val(), $("#nombreParPage").val());
 
     }
@@ -67,7 +67,7 @@ $(document).ready(function() {
 
   $('#boutonSubmit').click(function(event){
     event.preventDefault();
-    if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
+    if($("#commune").val() != "" && $("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
       envoieRequette($("#commune").val(), $("#nombreParPage").val());
       $("#liste").show();
     }
@@ -75,7 +75,7 @@ $(document).ready(function() {
 
 });
 
-function envoieRequette(ville, nombre){
+function envoieRequette(ville, nombre, date){
   $.ajax({
     url: "https://api.flickr.com/services/rest/",
     method: "GET",
@@ -85,7 +85,8 @@ function envoieRequette(ville, nombre){
       tags: ville,
       format: "json",
       nojsoncallback: "1",
-      per_page: nombre
+      per_page: nombre,
+      min_taken_date: date
     },
     success: function(dataImg){
       $('.ligneListe').remove();
@@ -124,6 +125,8 @@ function envoieRequette(ville, nombre){
       }
     }
   });
+
+  $("table").dataTable();
 
 
 function remplirModal(id, secret) {
