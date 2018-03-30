@@ -51,6 +51,25 @@ table tr td , table tr th{
 	display: none;
 }
 
+#liste {
+  border: 0.1vh solid black;
+  border-radius: 6vh;
+  background-color: #2A2F38;
+  width: auto;
+  padding: 5%;
+}
+
+#liste ul {
+  margin: auto;
+  text-align: center;
+}
+
+.ligneListe img {
+  max-width: 100%;
+  width: 20%;
+  height: auto;
+}
+
 .croix {
   position: absolute;
   cursor: pointer;
