@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
   $(".croix").on("click", function() {
     $(".modal").css("display", "none");
     $(".modalUtil").css("display", "none");
