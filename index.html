@@ -1,16 +1,19 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
   <head>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <title>Js-KoviSteam</title>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="script/codePostalComplete.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="script/codePostalComplete.js"></script>
     <link rel="stylesheet" href="style/style.css">
   </head>
   <body>
     <div class="modalUtil"></div>
-    <div class="modal"><div id="infos" dataull-id="">Yo</div><div class="croix">X</div></div>
+    <div class="modal"><div id="infos" data-id=""></div><div class="croix">X</div></div>
     <form action="#">
       <label>Entrer une commune <input id="commune" type="text" name="commune"></label>
       <input type="text" id="nombreParPage" value="10"/>
@@ -25,7 +28,7 @@
       </ul>
     </div>
     <div id="tableau">
-      <table>
+      <table id="table">
         <thead>
           <tr>
             <th>Image</th>
