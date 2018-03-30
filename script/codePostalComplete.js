@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  
+  $("#calendrier").datepicker();
 
   $(".croix").on("click", function() {
     $(".modal").css("display", "none");
