@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-  $("#onglets div:first-child").css("border", "2px solid grey");
-
   $(".croix").on("click", function() {
     $(".modal").css("display", "none");
     $(".modalUtil").css("display", "none");
@@ -60,18 +58,10 @@ $(document).ready(function() {
     }
   });
 
-  $("#nombreParPage").change(function(){
-    if($("#commune").val() != "" && $("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
-      envoieRequette($("#commune").val(), $("#nombreParPage").val());
-
-    }
-  });
-
   $('#boutonSubmit').click(function(event){
     event.preventDefault();
     if($("#commune").val() != "" && $("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
       envoieRequette($("#commune").val(), $("#nombreParPage").val());
-      $("#liste").show();
     }
   });
 
@@ -121,7 +111,6 @@ function envoieRequette(ville, nombre, date){
           });
         });
         $("#onglets div").show();
-        $("#liste").show();
       }else{
         $(".modal").css("display", "initial");
         $(".modalUtil").css("display", "initial");
