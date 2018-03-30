@@ -66,7 +66,7 @@ $(document).ready(function() {
     },
     select : function(event, ui) {
       if($("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
-        envoieRequette(ui.item.value, $("#nombreParPage").val());
+        envoieRequette(ui.item.value, $("#nombreParPage").val(), $("#calendrier").datepicker("getDate"));
       }
       champCommune = ui.item.value;
     },
@@ -78,7 +78,7 @@ $(document).ready(function() {
   $('#boutonSubmit').click(function(event){
     event.preventDefault();
     if($("#commune").val() != "" && $("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
-      envoieRequette($("#commune").val(), $("#nombreParPage").val());
+      envoieRequette($("#commune").val(), $("#nombreParPage").val(), $("#calendrier").datepicker("getDate"));
     }
   });
 
@@ -95,7 +95,7 @@ function envoieRequette(ville, nombre, date){
       format: "json",
       nojsoncallback: "1",
       per_page: nombre,
-      min_taken_date: date
+      min_taken_date: Math.round((date).getTime() / 1000)
     },
     success: function(dataImg){
       $('.ligneListe').remove();
