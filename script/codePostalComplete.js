@@ -56,13 +56,6 @@ $(document).ready(function() {
     }
   });
 
-  $("#nombreParPage").change(function(){
-    if($("#commune").val() != "" && $("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
-      envoieRequette($("#commune").val(), $("#nombreParPage").val());
-
-    }
-  });
-
   $('#boutonSubmit').click(function(event){
     event.preventDefault();
     if($("#commune").val() != "" && $("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
@@ -94,6 +87,9 @@ function envoieRequette(ville, nombre, date){
           $(".ligneListe img").on("click", function() {
             if ($('#infos').data("id") != $(this).data("id")) {
               remplirModal($(this).data("id"), $(this).data("secret"));
+            } else {
+              $(".modal").css("display", "initial");
+              $(".modalUtil").css("display", "initial");
             }
           });
           $.ajax({
@@ -122,11 +118,10 @@ function envoieRequette(ville, nombre, date){
     }
   });
 
-  $("table").dataTable();
 
 
 function remplirModal(id, secret) {
-  $.ajax({
+  var getInfo = $.ajax({
     url: "https://api.flickr.com/services/rest/",
     method: "GET",
     data: {
@@ -140,10 +135,12 @@ function remplirModal(id, secret) {
     success: function(dataInfo){
       $('#infos').data("id", id);
       $('#infos').html('<p>' + dataInfo.photo.title._content + '</p><p>' + dataInfo.photo.dates.taken + '</p><p>' + dataInfo.photo.owner.username + '</p>');
-      $(".modal").css("display", "initial");
-      $(".modalUtil").css("display", "initial");
     }
   });
+  $.when(getInfo).then(function() {
+    $(".modal").css("display", "initial");
+    $(".modalUtil").css("display", "initial");
+  })
 }
 
 
