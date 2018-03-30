@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+  $("#onglets div:first-child").css("border", "2px solid grey");
 
   $(".croix").on("click", function() {
     $(".modal").css("display", "none");
@@ -68,6 +69,7 @@ $(document).ready(function() {
     event.preventDefault();
     if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
       envoieRequette($("#commune").val(), $("#nombreParPage").val());
+      $("#liste").show();
     }
   });
 
@@ -113,6 +115,7 @@ function envoieRequette(ville, nombre){
           });
         });
         $("#onglets div").show();
+        $("#liste").show();
       }else{
         $(".modal").css("display", "initial");
         $(".modalUtil").css("display", "initial");
