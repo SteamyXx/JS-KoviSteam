@@ -173,3 +173,35 @@ input:hover{
 input:focus{
   background-color: #1E2229;
 }
+
+.ui-autocomplete {
+  background-color: #1E2229;
+  border: 0.1vh solid black;
+  border-radius: 1.5vh;
+  overflow: hidden;
+}
+
+.ui-menu-item{
+  background-color: #1E2229;
+  color: #CCCCCC;
+  border-bottom: 0.1vh solid black;
+  border-radius: 0;
+  padding: 1vh 1vw 1vh 1vw !important;
+}
+
+.ui-menu-item:last-child{
+  border: none;
+}
+
+.ui-state-focus {
+  background: none !important;
+  background-color: #474F5E !important;
+  color: #CCCCCC !important;
+  border: none !important;
+  border-top: 0.1vh solid black !important;
+  border-bottom: 0.3vh solid black !important;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
