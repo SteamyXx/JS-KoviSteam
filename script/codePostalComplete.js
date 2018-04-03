@@ -24,10 +24,11 @@ $(document).ready(function() {
 
   $("#onglets div").hide();
   $("#tableau, #liste").hide();
+  $("#tableau, #onglets").hide();
 
   $("#onglets div").on("click", function() {
-    $(this).css("border", "2px solid grey");
-    $("#onglets div").not(this).css("border", "2px solid white");
+    $(this).css("border", "0.3vh solid #CCC");
+    $("#onglets div").not(this).css("border", "0.3vh solid #2A2F38");
     $("#liste, #tableau").hide();
     $("#"+$(this).attr("value")).show();
   });
@@ -73,6 +74,8 @@ $(document).ready(function() {
     select : function(event, ui) {
       if($("#nombreParPage").val() != "" && $('#calendrier').val() != ""){
         envoieRequette(ui.item.value, $("#nombreParPage").val(), $("#calendrier").datepicker("getDate"));
+        $("#liste, #onglets").show();
+        $("#onglets div").show();
       }
       champCommune = ui.item.value;
     },
@@ -89,9 +92,6 @@ var dataTable = false;
 var table = null;
 $( document ).ajaxComplete(function() {
   nbrAjaxDone++;
-  console.log("Done");
-  console.log(table);
-  console.log(data);
   if (nbrAjaxDone-1 == nbrImage) {
     if (!dataTable) {
       dataTable = true;
@@ -99,6 +99,7 @@ $( document ).ajaxComplete(function() {
         data : data
       });
     } else {
+      console.log("yo");
       table.fnClearTable();
       table.fnAddData(data);
     }
@@ -158,7 +159,6 @@ function envoieRequette(ville, nombre, date){
             }
           });
         });
-        $("#onglets div").show();
       } else {
         $(".modal").css("display", "initial");
         $(".modalUtil").css("display", "initial");

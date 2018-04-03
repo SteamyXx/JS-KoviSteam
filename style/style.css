@@ -28,27 +28,37 @@ h1{
   font-size: 3.5vh;
 }
 
-#onglets {
-  margin-top: 3%;
-  margin-bottom: 3%;
+#table_filter label {
+  color: #CCC;
+  text-align: right;
 }
 
-#onglets div {
-  display: inline-block;
-  background-color: lightgrey;
-  padding: 1%;
-  cursor: pointer;
+#table_length label {
+  color: #CCC;
+}
+
+#table_paginate {
+  margin-top: 3vh;
 }
 
 table tr td , table tr th{
   border: 1px solid black;
 }
 
+table tr td {
+  background-color: #CCCCCC;
+}
+
+/*select[name="table_length"] {
+  background-color: #CCCCCC;
+}*/
+
 .modal {
   border: 5px solid #4A4A4A;
 	width: 33%;
 	height: 28%;
 	position: fixed;
+  border-radius: 2vh;
 	background-color: #DCDCDC;
 	display: none;
 	top: 30%;
@@ -68,6 +78,10 @@ table tr td , table tr th{
 	display: none;
 }
 
+.modal #infos {
+  margin-top: 5vh;
+}
+
 .croix {
   position: absolute;
   cursor: pointer;
@@ -75,16 +89,25 @@ table tr td , table tr th{
   right: 2%;
   width: 25px;
   height: auto;
-  border-radius: 40%;
   text-align: center;
-  background-color: grey;
+  border-radius: 3px;
   font-weight: 500;
+  padding-top: 4px;
+  padding-bottom: 3px;
+  background-color: grey;
+}
+
+.croix:hover {
+  transition: background-color 0.5s;
+  background-color: #C43A4A;
 }
 
 .typeAffichage {
   border: 0.1vh solid black;
-  border-radius: 6vh;
+  border-bottom-left-radius: 6vh;
+  border-bottom-right-radius: 6vh;
   background-color: #2A2F38;
+  /*background-color: #ffffff;*/
   width: auto;
   padding: 5%;
   margin: 0 4vw 0 4vw;
@@ -99,19 +122,58 @@ table tr td , table tr th{
   list-style-type: none;
 }
 
-#formatTableau {
-  border: 0.2vh solid white;
+#liste {
+  margin-bottom: 8vh;
+}
+
+#onglets {
+  text-align: left;
+  margin: 3% 4vw 0 4vw;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  background-color: #2A2F38;
+  border-top: 0.1vh solid black;
+  border-right: 0.1vh solid black;
+  border-left: 0.1vh solid black;
+  border-top-left-radius: 6vh;
+  border-top-right-radius: 6vh;
+}
+
+#onglets div {
+  font-size: 2.5vh;
+  height: auto;
+  background-color: #474F5E;
+  display: inline-block;
+  padding: 1%;
+  color: #CCCCCC;
+  cursor: pointer;
+  text-align: center;
+  width: 15%;
+  border-radius: 3vh;
+}
+
+#formatTableau  {
+  border: 0.3vh solid #2A2F38;
 }
 
 #formatListe {
-  margin-right: 15%;
-  margin-left: 15%;
+  border: 0.3vh solid #CCC;
+  margin-right: 3%;
+  margin-left: 3%;
 }
 
 .ligneListe img {
   max-width: 100%;
   width: 20%;
   height: auto;
+  margin-bottom: 1vh;
+  border-radius: 2vh;
+  border: 0.7vh solid #CCC;
+  cursor: pointer;
+}
+
+.ligneListe img:hover {
+  opacity: 0.8;
 }
 
 form{
