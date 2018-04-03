@@ -11,6 +11,7 @@ body{
   margin: 0;
   width: 100%;
   height: auto;
+  /*overflow: hidden;*/
 }
 
 #entete{
@@ -170,6 +171,20 @@ table tr td {
 
 .ligneListe img:hover {
   opacity: 0.8;
+}
+
+table img {
+  width: 250px;
+  height: auto;
+}
+
+table {
+  border-collapse: collapse !important;
+}
+
+table tr td:first-child {
+  width: auto !important;
+  height: auto;
 }
 
 form{
