@@ -37,6 +37,14 @@ $(document).ready(function() {
     event.preventDefault();
     if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
       envoieRequette($("#commune").val(), $("#nombreParPage").val(), $("#calendrier").datepicker("getDate"));
+      if (!$("#liste").is(":visible") && !$("#tableau").is(":visible")) {
+        $("#onglets div").show();
+        $("#onglets").show();
+        $("#tableau").hide();
+        $("#liste").show();
+        $("#formatListe").css("border-color", "#CCC");
+        $("#formatTableau").css("border-color", "#2A2F38");
+      }
     }
   });
 
@@ -99,9 +107,10 @@ $( document ).ajaxComplete(function() {
         data : data
       });
     } else {
-      console.log("yo");
       table.fnClearTable();
-      table.fnAddData(data);
+      if (typeof data !== 'undefined' && data.length > 0) {
+        table.fnAddData(data);
+      }
     }
   }
 });
@@ -150,7 +159,7 @@ function envoieRequette(ville, nombre, date){
             },
             success: function(dataInfo){
               data.push([
-                '<img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg" width="70%" height="70%"/>',
+                '<img src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/>',
                 dataInfo.photo.title._content,
                 dataInfo.photo.dates.taken,
                 dataInfo.photo.owner.username
