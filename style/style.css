@@ -2,10 +2,30 @@ html{
   width: auto;
   padding: 0;
   margin: 0;
+  font-family: "Courier New";
 }
 
 body{
   background-color: #1E2229;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+
+#entete{
+  background-color: #474F5E;
+  height: auto;
+  color: #CCCCCC;
+  padding: 4vh 5vw 4vh 5vw;
+  margin-top: 4vh;
+  margin-bottom: 6vh;
+}
+
+h1{
+  margin-top : 3vh;
+  margin-bottom: 3vh;
+  font-size: 3.5vh;
 }
 
 #onglets {
@@ -18,19 +38,6 @@ body{
   background-color: lightgrey;
   padding: 1%;
   cursor: pointer;
-}
-
-#liste li {
-  list-style-type: none;
-}
-
-#formatTableau {
-  border: 2px solid white;
-}
-
-#formatListe {
-  margin-right: 15%;
-  margin-left: 15%;
 }
 
 table tr td , table tr th{
@@ -61,25 +68,6 @@ table tr td , table tr th{
 	display: none;
 }
 
-#liste {
-  border: 0.1vh solid black;
-  border-radius: 6vh;
-  background-color: #2A2F38;
-  width: auto;
-  padding: 5%;
-}
-
-#liste ul {
-  margin: auto;
-  text-align: center;
-}
-
-.ligneListe img {
-  max-width: 100%;
-  width: 20%;
-  height: auto;
-}
-
 .croix {
   position: absolute;
   cursor: pointer;
@@ -93,20 +81,51 @@ table tr td , table tr th{
   font-weight: 500;
 }
 
+.typeAffichage {
+  border: 0.1vh solid black;
+  border-radius: 6vh;
+  background-color: #2A2F38;
+  width: auto;
+  padding: 5%;
+  margin: 0 4vw 0 4vw;
+}
+
+#liste ul {
+  margin: auto;
+  text-align: center;
+}
+
+#liste li {
+  list-style-type: none;
+}
+
+#formatTableau {
+  border: 0.2vh solid white;
+}
+
+#formatListe {
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
+.ligneListe img {
+  max-width: 100%;
+  width: 20%;
+  height: auto;
+}
+
 form{
   background-color: #2A2F38;
   text-align: center;
   color: #CCCCCC;
   overflow: hidden;
   border-radius: 3vw;
-  border: 1px solid black;
+  border: 0.1vh solid black;
   margin-left: auto;
   margin-right: auto;
   width: 33%;
-  padding-left: 2%;
-  padding-right: 2%;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding: 4vh 4vw;
+  font-size: 2vh;
 }
 
 label{
@@ -119,20 +138,21 @@ label{
 
 label input{
   float: right;
+  margin-top: -0.9vh;
 }
 
 input{
   color: #CCCCCC;
-  border: 1px solid black;
+  border: 0.1vh solid black;
   border-radius: 1.5vh;
-  transition: background-color 0.5s;
-  background-color: #2A2F38;
-  width: 33%;
+  width: 40%;
   height: 100%;
   text-align: center;
   padding-top: 1%;
   padding-bottom: 1%;
-  font-size: 100%;
+  font-size: 2vh;
+  transition: background-color 0.5s;
+  background-color: #2A2F38;
 }
 
 input[type="submit"]{
