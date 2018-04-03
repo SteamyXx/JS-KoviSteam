@@ -49,10 +49,6 @@ table tr td {
   background-color: #CCCCCC;
 }
 
-/*select[name="table_length"] {
-  background-color: #CCCCCC;
-}*/
-
 .modal {
   border: 5px solid #4A4A4A;
 	width: 33%;
@@ -237,14 +233,15 @@ input:focus{
 }
 
 .ui-autocomplete {
-  background-color: #1E2229;
-  border: 0.1vh solid black;
-  border-radius: 1.5vh;
+  background-color: #1E2229 !important;
+  border: 0.1vh solid black !important;
+  border-radius: 1.5vh !important;
   overflow: hidden;
 }
 
 .ui-menu-item{
   background-color: #1E2229;
+  transition: background-color 0.25s;
   color: #CCCCCC;
   border-bottom: 0.1vh solid black;
   border-radius: 0;
@@ -257,6 +254,7 @@ input:focus{
 
 .ui-state-focus {
   background: none !important;
+  transition: background-color 0.25s;
   background-color: #474F5E !important;
   color: #CCCCCC !important;
   border: none !important;
