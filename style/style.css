@@ -46,7 +46,7 @@ table tr td , table tr th{
   border: 1px solid black;
 }
 
-table tr td {
+#tableau table tr td {
   background-color: #CCCCCC;
 }
 
@@ -279,4 +279,62 @@ input:focus{
 
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+#ui-datepicker-div{
+  background: none !important;
+  background-color: #1E2229 !important;
+  color:#CCCCCC;
+  padding: 2vh 1vw;
+  border: 0.1vh solid black;
+  border-radius: 1.5vh;
+}
+
+.ui-datepicker-header{
+  background: none;
+  color: #CCCCCC;
+  background-color: #2A2F38;
+  border: 0.1vh solid black;
+  border-radius: 1.5vh;
+}
+
+.ui-datepicker-prev-hover, .ui-datepicker-next-hover{
+  transition: background-color 0.25s;
+  background: none !important;
+  background-color: #768296 !important;
+  margin: 2px !important;
+}
+
+.ui-datepicker-prev, .ui-datepicker-next{
+  transition: background-color 0.25s;
+  border-radius: 1vh;
+  border: none !important;
+  margin: 2px !important;
+}
+
+.ui-datepicker-calendar tbody{
+  background-color: #2A2F38;
+}
+
+.ui-datepicker-calendar tbody a{
+  text-align: center !important;
+}
+
+.ui-datepicker-calendar .ui-state-default{
+  transition: background-color 0.25s;
+  border: none;
+  background: none;
+  color: #CCCCCC;
+  padding: 2vh, 1vw;
+  border-radius: 100%;
+}
+
+.ui-datepicker-calendar .ui-state-hover{
+  transition: background-color 0.25s;
+  background-color: #474F5E;
+}
+
+.ui-datepicker-calendar .ui-state-active{
+  border: 0.1vh solid black;
+  color: black;
 }
