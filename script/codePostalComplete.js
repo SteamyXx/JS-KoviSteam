@@ -137,7 +137,7 @@ function envoieRequette(ville, nombre, date){
         nbrImage = $(dataImg.photos.photo).length;
         console.log("nbrImage : "+nbrImage);
         $(dataImg.photos.photo).each(function(index, img){
-          $('ul').append('<li class="ligneListe"><img data-id="'+(img.id)+'" data-secret="'+(img.secret)+'" src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
+          $('#liste ul').append('<li class="ligneListe"><img data-id="'+(img.id)+'" data-secret="'+(img.secret)+'" src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
           $(".ligneListe img").on("click", function() {
             if ($('#infos').data("id") != $(this).data("id")) {
               remplirModal($(this).data("id"), $(this).data("secret"));
@@ -164,7 +164,6 @@ function envoieRequette(ville, nombre, date){
                 dataInfo.photo.dates.taken,
                 dataInfo.photo.owner.username
             ]);
-              // $('table tbody').append('<tr class="ligneTableau"><td></td><td>' + dataInfo.photo.title._content + '</td><td>' + dataInfo.photo.dates.taken + '</td><td>' + dataInfo.photo.owner.username + '</td></tr>');
             }
           });
         });

@@ -338,3 +338,27 @@ input[type=number] {
   border: 0.1vh solid black;
   color: black;
 }
+
+#table_paginate a{
+  transition: background-color 0.25s;
+  background-color: #2A2F38;
+  border: 0.1vh solid black;
+  border-radius: 1.5vh;
+  color: #CCCCCC !important;
+}
+
+#table_paginate .current{
+  background: none;
+  transition: background-color 0.25s;
+  background-color: #1E2229;
+}
+
+#table_paginate a:hover{
+  background: none;
+  transition: background-color 0.25s;
+  background-color: #474F5E;
+}
+
+#table_paginate .disabled:hover{
+  background: none;
+}
