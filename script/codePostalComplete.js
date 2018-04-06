@@ -74,7 +74,6 @@ $(document).ready(function() {
           response(parse);
         },
         fail : function(){
-          console.log("fail");
           champCommune = "";
         }
       });
@@ -134,7 +133,6 @@ function envoieRequette(ville, nombre, date){
       $('.ligneListe').remove();
       if($(dataImg.photos.photo).length != 0){
         nbrImage = $(dataImg.photos.photo).length;
-        console.log("nbrImage : "+nbrImage);
         $(dataImg.photos.photo).each(function(index, img){
           $('#liste ul').append('<li class="ligneListe"><img data-id="'+(img.id)+'" data-secret="'+(img.secret)+'" src="https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg"/></li>');
           $(".ligneListe img").on("click", function() {
