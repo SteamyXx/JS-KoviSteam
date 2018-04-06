@@ -38,8 +38,27 @@ $(document).ready(function() {
     $("#"+$(this).attr("value")).show();
   });
 
-  // Fonction permettant l'autocomplétion lors du saisie de la ville
   var champCommune = "";
+
+  // Fonction permettant récupèrer les données de la ville saisie via la fonction envoieRequette() lors d'un clique sur le bouton "Rechercher"
+  // si tous les champs sont spécifiés
+  $('#boutonSubmit').click(function(event){
+    event.preventDefault();
+    $("#commune").val(champCommune);
+    if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
+      envoieRequette($("#commune").val(), $("#nombreParPage").val(), $("#calendrier").datepicker("getDate"));
+      if (!$("#liste").is(":visible") && !$("#tableau").is(":visible")) {
+        $("#onglets div").show();
+        $("#onglets").show();
+        $("#tableau").hide();
+        $("#liste").show();
+        $("#formatListe").css("border-color", "#CCC");
+        $("#formatTableau").css("border-color", "#2A2F38");
+      }
+    }
+  });
+
+  // Fonction permettant l'autocomplétion lors du saisie de la ville
   $("#commune").autocomplete({
     minLength: 2,
     source: function(request, response) {
@@ -81,24 +100,6 @@ $(document).ready(function() {
       $("#commune").val(champCommune);
     }
   });
-});
-
-// Fonction permettant récupèrer les données de la ville saisie via la fonction envoieRequette() lors d'un clique sur le bouton "Rechercher"
-// si tous les champs sont spécifiés
-$('#boutonSubmit').click(function(event){
-  $("#commune").val(champCommune);
-  event.preventDefault();
-  if($("#commune").val() != "" && $("#nombreParPage").val() != ""){
-    envoieRequette($("#commune").val(), $("#nombreParPage").val(), $("#calendrier").datepicker("getDate"));
-    if (!$("#liste").is(":visible") && !$("#tableau").is(":visible")) {
-      $("#onglets div").show();
-      $("#onglets").show();
-      $("#tableau").hide();
-      $("#liste").show();
-      $("#formatListe").css("border-color", "#CCC");
-      $("#formatTableau").css("border-color", "#2A2F38");
-    }
-  }
 });
 
 var data = [];

@@ -248,6 +248,7 @@ input:focus{
 }
 
 .ui-autocomplete {
+  background: none !important;
   background-color: #1E2229 !important;
   border: 0.1vh solid black !important;
   border-radius: 1.5vh !important;
