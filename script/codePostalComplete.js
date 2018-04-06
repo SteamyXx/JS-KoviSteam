@@ -132,7 +132,6 @@ function envoieRequette(ville, nombre, date){
     },
     success: function(dataImg){
       $('.ligneListe').remove();
-      $('.ligneTableau').remove();
       if($(dataImg.photos.photo).length != 0){
         nbrImage = $(dataImg.photos.photo).length;
         console.log("nbrImage : "+nbrImage);
@@ -163,7 +162,7 @@ function envoieRequette(ville, nombre, date){
                 dataInfo.photo.title._content,
                 dataInfo.photo.dates.taken,
                 dataInfo.photo.owner.username
-            ]);
+              ]);
             }
           });
         });
